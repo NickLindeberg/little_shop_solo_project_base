@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-11-03T18:21:07-06:00">2018-11-03T18:21:07-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-11-03T18:40:50-06:00">2018-11-03T18:40:50-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.85
+         3.44
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>10</td>
         <td>10</td>
         <td>0</td>
-        <td>8.2</td>
+        <td>12.2</td>
       </tr>
       
       <tr>
@@ -67,7 +67,7 @@
         <td>27</td>
         <td>15</td>
         <td>12</td>
-        <td>3.6</td>
+        <td>6.9</td>
       </tr>
       
       <tr>
@@ -87,7 +87,7 @@
         <td>26</td>
         <td>18</td>
         <td>8</td>
-        <td>4.3</td>
+        <td>12.7</td>
       </tr>
       
       <tr>
@@ -232,8 +232,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="40" data-linenumber="8">
-          <span class="hits">40</span>
+        <li class="covered" data-hits="60" data-linenumber="8">
+          <span class="hits">60</span>
           
           <code class="ruby">    @current_user_lookup ||= User.find(session[:user_id]) if session[:user_id]</code>
         </li>
@@ -280,8 +280,8 @@
           <code class="ruby">  def build_cart</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="16">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="43" data-linenumber="16">
+          <span class="hits">43</span>
           
           <code class="ruby">    @cart ||= Cart.new(session[:cart])</code>
         </li>
@@ -341,8 +341,8 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="5">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="12" data-linenumber="5">
+          <span class="hits">12</span>
           
           <code class="ruby">    @items = Item.where(id: @cart.contents.keys)</code>
         </li>
@@ -365,44 +365,44 @@
           <code class="ruby">  def update</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="9">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="9">
+          <span class="hits">20</span>
           
           <code class="ruby">    item = Item.find(params[:item_id])</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="10">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="10">
+          <span class="hits">20</span>
           
           <code class="ruby">    if params[:quantity] == &#39;more&#39;</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="11">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="11">
+          <span class="hits">20</span>
           
           <code class="ruby">      if @cart.count_of(item.id)+1 &lt;= item.inventory</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="12">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="12">
+          <span class="hits">20</span>
           
           <code class="ruby">        @cart.add_item(item.id)</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="13">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="13">
+          <span class="hits">20</span>
           
           <code class="ruby">        flash[:success] = &quot;Added another #{item.name} to your cart&quot;</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="14">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="14">
+          <span class="hits">20</span>
           
           <code class="ruby">        if @cart.count_of(item.id) &gt;= 10 &amp;&amp; @cart.count_of(item.id) &lt; 20</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="15">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="10" data-linenumber="15">
+          <span class="hits">10</span>
           
           <code class="ruby">        else @cart.count_of(item.id) &gt; 19</code>
         </li>
@@ -497,14 +497,14 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="31">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="31">
+          <span class="hits">20</span>
           
           <code class="ruby">    session[:cart] = @cart.contents</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="32">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="32">
+          <span class="hits">20</span>
           
           <code class="ruby">    redirect_back(fallback_location: items_path)</code>
         </li>
@@ -1129,8 +1129,8 @@
           <code class="ruby">  def initialize(initial_contents)</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="5">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="43" data-linenumber="5">
+          <span class="hits">43</span>
           
           <code class="ruby">    @contents = initial_contents || Hash.new(0)</code>
         </li>
@@ -1153,8 +1153,8 @@
           <code class="ruby">  def total_count</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="9">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="23" data-linenumber="9">
+          <span class="hits">23</span>
           
           <code class="ruby">    @contents.values.sum</code>
         </li>
@@ -1177,14 +1177,14 @@
           <code class="ruby">  def add_item(item_id)</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="13">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="13">
+          <span class="hits">20</span>
           
           <code class="ruby">    @contents[item_id.to_s] ||= 0</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="14">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="20" data-linenumber="14">
+          <span class="hits">20</span>
           
           <code class="ruby">    @contents[item_id.to_s] += 1</code>
         </li>
@@ -1309,8 +1309,8 @@
           <code class="ruby">  def count_of(item_id)</code>
         </li>
       
-        <li class="covered" data-hits="40" data-linenumber="35">
-          <span class="hits">40</span>
+        <li class="covered" data-hits="167" data-linenumber="35">
+          <span class="hits">167</span>
           
           <code class="ruby">    @contents[item_id.to_s].to_i</code>
         </li>
@@ -1333,20 +1333,20 @@
           <code class="ruby">  def grand_total</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="39">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="12" data-linenumber="39">
+          <span class="hits">12</span>
           
           <code class="ruby">    total = 0</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="40">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="12" data-linenumber="40">
+          <span class="hits">12</span>
           
           <code class="ruby">    Item.where(id: @contents.keys).each do |item|</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="41">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="12" data-linenumber="41">
+          <span class="hits">12</span>
           
           <code class="ruby">      total += (item.price * count_of(item.id))</code>
         </li>
@@ -1357,8 +1357,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="43">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="12" data-linenumber="43">
+          <span class="hits">12</span>
           
           <code class="ruby">    total</code>
         </li>

@@ -25,14 +25,20 @@
           <% if @cart.count_of(item.id) < 10 %>
             <%= item.price %>
           <% elsif @cart.count_of(item.id) >= 10 && @cart.count_of(item.id) <= 19  %>
-            <%= (item.price * 0.9) %>
+            <%= (item.price * 0.9).round(2) %>
           <% else @cart.count_of(item.id) > 20 %>
-            <%= (item.price * 0.8) %>
+            <%= (item.price * 0.8).round(2) %>
           <% end %>
         </td>
         <td>Quantity: <%= @cart.count_of(item.id) %></td>
         <td>Subtotal:
-          <%= number_to_currency(item.price * @cart.count_of(item.id)) %> </td>
+          <% if @cart.count_of(item.id) < 10 %>
+            <%= number_to_currency(item.price * @cart.count_of(item.id)) %> </td>
+          <% elsif @cart.count_of(item.id) >= 10 && @cart.count_of(item.id) <= 19  %>
+          <%= number_to_currency((item.price * @cart.count_of(item.id))* 0.9) %> </td>
+          <% else @cart.count_of(item.id) > 20 %>
+            <%= number_to_currency((item.price * @cart.count_of(item.id))* 0.8) %> </td>
+          <% end %>
         <td>
           <%= button_to 'Add 1', cart_item_quantity_path(item_id: item.id), method: :patch, params: {quantity: :more} %>
           <%= button_to 'Remove 1', cart_item_quantity_path(item_id: item.id), method: :patch, params: {quantity: :less} %>
