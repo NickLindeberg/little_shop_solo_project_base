@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Image</th>
+      <th>Merchant</th>
       <th>Price</th>
       <th>Quantity</th>
       <th>Subtotal</th>
@@ -20,9 +21,18 @@
           <img id="item-image-<%= item.id %>" alt="image for <%= item.name %>" src="<%= item.image %>" width="200" />
         </td>
         <td>Merchant: <%= item.user.name %></td>
-        <td>Price: <%= item.price %></td>
+        <td>Price:
+          <% if @cart.count_of(item.id) < 10 %>
+            <%= item.price %>
+          <% elsif @cart.count_of(item.id) >= 10 && @cart.count_of(item.id) <= 19  %>
+            <%= (item.price * 0.9) %>
+          <% else @cart.count_of(item.id) > 20 %>
+            <%= (item.price * 0.8) %>
+          <% end %>
+        </td>
         <td>Quantity: <%= @cart.count_of(item.id) %></td>
-        <td>Subtotal: <%= number_to_currency(item.price * @cart.count_of(item.id)) %></td>
+        <td>Subtotal:
+          <%= number_to_currency(item.price * @cart.count_of(item.id)) %> </td>
         <td>
           <%= button_to 'Add 1', cart_item_quantity_path(item_id: item.id), method: :patch, params: {quantity: :more} %>
           <%= button_to 'Remove 1', cart_item_quantity_path(item_id: item.id), method: :patch, params: {quantity: :less} %>
