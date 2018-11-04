@@ -23,7 +23,7 @@ describe 'merchant can discount bulk items' do
 
     click_button("Add 1")
     expect(page).to have_content("Price: 2.7")
-    
+
 
   end
 end
