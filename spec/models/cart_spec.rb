@@ -79,4 +79,20 @@ RSpec.describe Cart do
 
     expect(cart.grand_total).to eq(item_1.price+item_2.price+item_2.price)
   end
+
+  it '.item_discount_ten' do
+    item_1 = create(:item, price: 10)
+    cart = Cart.new({})
+    cart.add_item(item_1.id)
+
+    expect(cart.item_discount_ten(item_1)).to eq(9)
+  end
+
+  it '.item_discount_twenty' do
+    item_1 = create(:item, price: 10)
+    cart = Cart.new({})
+    cart.add_item(item_1.id)
+
+    expect(cart.item_discount_twenty(item_1)).to eq(8)
+  end
 end
