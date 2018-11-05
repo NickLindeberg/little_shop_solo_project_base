@@ -36,5 +36,6 @@ describe 'merchant can discount bulk items' do
     click_button("Add 1")
 
     expect(page).to have_content("Price: 2.4")
+    expect(page).to have_content("Grand Total: $48.00")
   end
 end

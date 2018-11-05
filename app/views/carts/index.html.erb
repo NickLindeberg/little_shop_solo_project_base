@@ -35,9 +35,9 @@
           <% if @cart.count_of(item.id) < 10 %>
             <%= number_to_currency(item.price * @cart.count_of(item.id)) %> </td>
           <% elsif @cart.count_of(item.id) >= 10 && @cart.count_of(item.id) <= 19  %>
-          <%= number_to_currency((item.price * @cart.count_of(item.id))* 0.9) %> </td>
+          <%= number_to_currency(@cart.item_discount_ten(item) * @cart.count_of(item.id)) %> </td>
           <% else @cart.count_of(item.id) > 20 %>
-            <%= number_to_currency((item.price * @cart.count_of(item.id))* 0.8) %> </td>
+          <%= number_to_currency(@cart.item_discount_twenty(item) * @cart.count_of(item.id)) %> </td>
           <% end %>
         <td>
           <%= button_to 'Add 1', cart_item_quantity_path(item_id: item.id), method: :patch, params: {quantity: :more} %>
