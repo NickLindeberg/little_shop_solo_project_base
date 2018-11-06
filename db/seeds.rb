@@ -36,3 +36,5 @@ create(:fulfilled_order_item, order: order, item: item_3, price: 3, quantity: 1)
 order = create(:completed_order, user: user)
 create(:fulfilled_order_item, order: order, item: item_1, price: 1, quantity: 1)
 create(:fulfilled_order_item, order: order, item: item_2, price: 2, quantity: 1)
+
+User.find_by(role: :merchant).update(email: "merchant", password: "merchant")

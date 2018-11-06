@@ -8,8 +8,8 @@ class ItemsController < ApplicationController
       @slowest_merchants = User.slowest_merchants(3)
   end
 
-  def new 
-    @item = Item.new 
+  def new
+    @item = Item.new
     @merchant = User.find(params[:merchant_id])
     @form_url = merchant_items_path
   end
@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def edit 
+  def edit
     render file: 'errors/not_found', status: 404 if current_user.nil?
     @merchant = User.find(params[:merchant_id])
     render file: 'errors/not_found', status: 404 unless current_admin? || current_user == @merchant
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     @form_url = merchant_item_path(@merchant, @item)
   end
 
-  def create 
+  def create
     render file: 'errors/not_found', status: 404 if current_user.nil?
     @merchant = User.find(params[:merchant_id])
     render file: 'errors/not_found', status: 404 unless current_admin? || current_user == @merchant
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def update 
+  def update
     render file: 'errors/not_found', status: 404 if current_user.nil?
     @merchant = User.find(params[:merchant_id])
     item_id = :item_id
@@ -65,6 +65,16 @@ class ItemsController < ApplicationController
       @item.active = true
       @item.save
       redirect_to current_admin? ? merchant_items_path(@merchant) : dashboard_items_path
+    elsif request.fullpath.split('/')[-1] == 'discount'
+      flash[:success] = "Item #{@item.id} is now discounted for bulk orders"
+      @item.discount = true
+      @item.save
+      redirect_to current_admin? ? merchant_items_path(@merchant) : dashboard_items_path
+    elsif request.fullpath.split('/')[-1] == 'full_price'
+      flash[:success] = "Item #{@item.id} is no longer discounted"
+      @item.discount = false
+      @item.save
+      redirect_to current_admin? ? merchant_items_path(@merchant) : dashboard_items_path
     else
       @item.update(item_params)
       if @item.save
@@ -76,7 +86,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-
 
   private
     def item_params

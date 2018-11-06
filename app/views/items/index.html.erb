@@ -99,11 +99,19 @@
 
     <% if current_admin? || current_user && current_user == item.user %>
       <p>Item Active: <%= item.active %></p>
+      <p>Item Discounted: <%= item.discount %></p>
+
       <p><%= link_to 'Edit Item', edit_merchant_item_path(current_user, item), class: 'card-link' %></p>
       <% if item.active %>
-      <%= button_to "Disable Item", merchant_item_disable_path(current_user, item.id), method: :patch, params: { toggle: :disable } %>
+        <%= button_to "Disable Item", merchant_item_disable_path(current_user, item.id), method: :patch, params: { toggle: :disable } %>
       <% else %>
-      <%= button_to "Enable Item", merchant_item_enable_path(current_user, item.id), method: :patch, params: { toggle: :enable } %>
+        <%= button_to "Enable Item", merchant_item_enable_path(current_user, item.id), method: :patch, params: { toggle: :enable } %>
+      <% end %>
+
+      <% if item.discount %>
+        <%= button_to "Remove Discount", merchant_item_full_price_path(current_user, item.id), method: :patch, params: { toggle: :full_price } %>
+      <% else %>
+        <%= button_to "Enable Discount", merchant_item_enable_path(current_user, item.id), method: :patch, params: { toggle: :discount } %>
       <% end %>
     <% end %>
   </div>
