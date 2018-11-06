@@ -42,5 +42,3 @@ Users can disable any rating they created. Admins can enable or disable any rati
 Disabled ratings should not factor into total counts of ratings, nor averages of ratings.
 
 Ratings will include a title, a description, and a rating from 1 to 5.
-
----
