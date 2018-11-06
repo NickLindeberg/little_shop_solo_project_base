@@ -50,4 +50,36 @@ class Cart
   def item_discount_twenty(item)
     item.price * 0.80
   end
+
+  def discount(item)
+    if count_of(item.id) < 10
+      item.price
+    elsif count_of(item.id) >= 10 && count_of(item.id) <= 19
+      item_discount_ten(item)
+    else count_of(item.id) > 20
+      item_discount_twenty(item)
+    end
+  end
+
+  def sub(item)
+    if count_of(item.id) < 10
+       item.price * count_of(item.id)
+    elsif count_of(item.id) >= 10 && count_of(item.id) <= 19
+       item_discount_ten(item) * count_of(item.id)
+    else count_of(item.id) > 20
+       item_discount_twenty(item) * count_of(item.id)
+    end
+  end
+
+  def discounted_total(item_subs)
+    total = 0
+    Item.where(id: @contents.keys).each do |item|
+      total += (item.price * count_of(item.id))
+    end
+    if item_subs
+      difference = total - item_subs
+      gt = total - difference
+      gt
+    end
+  end
 end

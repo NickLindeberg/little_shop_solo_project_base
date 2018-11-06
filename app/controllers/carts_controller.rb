@@ -11,9 +11,6 @@ class CartsController < ApplicationController
       if @cart.count_of(item.id)+1 <= item.inventory
         @cart.add_item(item.id)
         flash[:success] = "Added another #{item.name} to your cart"
-        if @cart.count_of(item.id) >= 10 && @cart.count_of(item.id) < 20
-        else @cart.count_of(item.id) > 19
-        end
       else
         flash[:warning] = "Cannot add another #{item.name} to your cart, merchant doesn't have enough inventory"
       end
