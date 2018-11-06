@@ -12,6 +12,8 @@
       <th></th>
     </tr>
   </thead>
+  
+  <% @item_subs = 0 %>
 
   <tbody>
     <% @items.each do |item| %>
@@ -22,23 +24,12 @@
         </td>
         <td>Merchant: <%= item.user.name %></td>
         <td>Price:
-          <% if @cart.count_of(item.id) < 10 %>
-            <%= item.price %>
-          <% elsif @cart.count_of(item.id) >= 10 && @cart.count_of(item.id) <= 19  %>
-            <%= (item.price * 0.9).round(2) %>
-          <% else @cart.count_of(item.id) > 20 %>
-            <%= (item.price * 0.8).round(2) %>
-          <% end %>
+          <%= number_to_currency(@cart.discount(item)) %>
         </td>
         <td>Quantity: <%= @cart.count_of(item.id) %></td>
         <td>Subtotal:
-          <% if @cart.count_of(item.id) < 10 %>
-            <%= number_to_currency(item.price * @cart.count_of(item.id)) %> </td>
-          <% elsif @cart.count_of(item.id) >= 10 && @cart.count_of(item.id) <= 19  %>
-          <%= number_to_currency(@cart.item_discount_ten(item) * @cart.count_of(item.id)) %> </td>
-          <% else @cart.count_of(item.id) > 20 %>
-          <%= number_to_currency(@cart.item_discount_twenty(item) * @cart.count_of(item.id)) %> </td>
-          <% end %>
+          <%= number_to_currency(@cart.sub(item))  %>
+          <% @item_subs += @cart.sub(item) %>
         <td>
           <%= button_to 'Add 1', cart_item_quantity_path(item_id: item.id), method: :patch, params: {quantity: :more} %>
           <%= button_to 'Remove 1', cart_item_quantity_path(item_id: item.id), method: :patch, params: {quantity: :less} %>
@@ -49,10 +40,14 @@
     <% end %>
     <tr>
       <td colspan=4></td>
-      <td>Grand Total: <%= number_to_currency(@cart.grand_total) %></td>
+      <td>Grand Total: <%= number_to_currency(@cart.grand_total) %>
+        <% if number_to_currency(@cart.discounted_total(@item_subs)) != number_to_currency(@cart.grand_total)  %>
+      <td>Discounted Total: <%= number_to_currency(@cart.discounted_total(@item_subs)) %>
+        <% end %>
     </tr>
   </tbody>
 </table>
+
 
 <%= button_to 'Empty Cart', cart_path, method: :delete %>
 
