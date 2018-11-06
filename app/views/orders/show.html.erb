@@ -36,7 +36,7 @@ Updated <%= distance_of_time_in_words(@order.created_at, Time.now) %> ago
     <td><%= o_item.quantity %></td>
     <td><%= number_to_currency(o_item.price) %></td>
     <td><%= number_to_currency(o_item.subtotal) %></td>
-    <td><%= button_to "Rate Item", new_order_item_rating_path(o_item) %></td>
+    <td><%= link_to "Rate Item", new_order_item_rating_path(o_item) %></td>
 
     <td>
       <% if o_item.item.user == current_user &&
