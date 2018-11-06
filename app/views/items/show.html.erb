@@ -28,6 +28,12 @@
   <%= @item.inventory %>
 </p>
 
+<% if @item.discount %>
+  Item offers discount for bulk orders
+<% else %>
+
+<% end %>
+
 <%= button_to 'Add to Cart', cart_item_quantity_path(item_id: @item.id), method: :patch, params: {quantity: :more} %>
 
 <% if current_admin? || current_user == @item.user %>
