@@ -23,9 +23,14 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create] do
     patch ':order_item_id/fulfill', to: 'order_items#update', as: 'item_fulfill'
   end
-  resources :order_items, only: [:update]
+  resources :order_items, only: [:update] do
+    resources :ratings, only: [:new, :create]
+  end
 
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show] do
+
+  end
+
   resources :users, only: [:index, :new, :create, :edit, :show, :update] do
     resources :orders, only: [:index, :update]
     patch 'enable', to: 'users#update'
