@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-11-06T10:42:30-07:00">2018-11-06T10:42:30-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-11-06T12:30:55-07:00">2018-11-06T12:30:55-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">59.61%</span></span>
+    (<span class="covered_percent"><span class="red">63.72%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.6
+         0.75
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>10</b> files in total.
-    <b>203</b> relevant lines. 
-    <span class="green"><b>121</b> lines covered</span> and
-    <span class="red"><b>82</b> lines missed </span>
+    <b>11</b> files in total.
+    <b>215</b> relevant lines. 
+    <span class="green"><b>137</b> lines covered</span> and
+    <span class="red"><b>78</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,12 +52,22 @@
       
       <tr>
         <td class="strong"><a href="#0ab2bcfcb1e05ea03d5b18a5ae493760760698f7" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
-        <td class="red strong">80.0 %</td>
+        <td class="yellow strong">90.0 %</td>
         <td>18</td>
         <td>10</td>
-        <td>8</td>
-        <td>2</td>
-        <td>0.8</td>
+        <td>9</td>
+        <td>1</td>
+        <td>1.4</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#0fc7355bb18df50005e13c8bc02649743afd75d2" class="src_link" title="app/controllers/order_items_controller.rb">app/controllers/order_items_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>17</td>
+        <td>12</td>
+        <td>12</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -67,17 +77,17 @@
         <td>41</td>
         <td>8</td>
         <td>33</td>
-        <td>0.2</td>
+        <td>0.3</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#9d00863b29441f2f131286c753f06d9800df3903" class="src_link" title="app/models/cart.rb">app/models/cart.rb</a></td>
-        <td class="red strong">26.79 %</td>
+        <td class="red strong">28.57 %</td>
         <td>93</td>
         <td>56</td>
-        <td>15</td>
-        <td>41</td>
-        <td>0.3</td>
+        <td>16</td>
+        <td>40</td>
+        <td>0.4</td>
       </tr>
       
       <tr>
@@ -92,12 +102,12 @@
       
       <tr>
         <td class="strong"><a href="#5bc8e2b985791fe3018158f96c4c9a25e86de800" class="src_link" title="app/models/order.rb">app/models/order.rb</a></td>
-        <td class="red strong">64.29 %</td>
+        <td class="red strong">78.57 %</td>
         <td>50</td>
         <td>14</td>
-        <td>9</td>
-        <td>5</td>
-        <td>0.6</td>
+        <td>11</td>
+        <td>3</td>
+        <td>1.1</td>
       </tr>
       
       <tr>
@@ -107,7 +117,7 @@
         <td>8</td>
         <td>8</td>
         <td>0</td>
-        <td>1.0</td>
+        <td>1.5</td>
       </tr>
       
       <tr>
@@ -169,11 +179,11 @@
         <div class="source_table" id="0ab2bcfcb1e05ea03d5b18a5ae493760760698f7">
   <div class="header">
     <h3>app/controllers/application_controller.rb</h3>
-    <h4><span class="red">80.0 %</span> covered</h4>
+    <h4><span class="yellow">90.0 %</span> covered</h4>
     <div>
       <b>10</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <span class="green"><b>9</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -246,8 +256,8 @@
           <code class="ruby">  def current_admin?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="12">
-          
+        <li class="covered" data-hits="3" data-linenumber="12">
+          <span class="hits">3</span>
           
           <code class="ruby">    current_user &amp;&amp; current_user.admin?</code>
         </li>
@@ -270,8 +280,8 @@
           <code class="ruby">  def build_cart</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="16">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="4" data-linenumber="16">
+          <span class="hits">4</span>
           
           <code class="ruby">    @cart ||= Cart.new(session[:cart])</code>
         </li>
@@ -283,6 +293,127 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="0fc7355bb18df50005e13c8bc02649743afd75d2">
+  <div class="header">
+    <h3>app/controllers/order_items_controller.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>12</b> relevant lines. 
+      <span class="green"><b>12</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class OrderItemsController &lt; ApplicationController</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def update</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @order_item = OrderItem.find(params[:order_item_id])</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @order_item.fulfilled = true</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @order_item.save</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @order_item.item.inventory -= @order_item.quantity</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @order_item.item.save</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @order = @order_item.order</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    if @order.order_items.where(fulfilled: false).count == 0</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @order.update(status: :completed)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    flash[:success] = &quot;Item fulfilled, good job on the sale!&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    redirect_back(fallback_location: dashboard_orders_path)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby">end</code>
@@ -679,20 +810,20 @@
           <code class="ruby">  def show</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="63">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="63">
+          <span class="hits">3</span>
           
           <code class="ruby">    @order = Order.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="64">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="64">
+          <span class="hits">3</span>
           
           <code class="ruby">    render file: &#39;errors/not_found&#39;, status: 404 unless current_user || current_user.user? &amp;&amp; current_user == @order.user || current_user.merchant? &amp;&amp; current_user.merchant_for_order(@order) || current_admin?</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="65">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="65">
+          <span class="hits">3</span>
           
           <code class="ruby">    @user = @order.user</code>
         </li>
@@ -717,11 +848,11 @@
         <div class="source_table" id="9d00863b29441f2f131286c753f06d9800df3903">
   <div class="header">
     <h3>app/models/cart.rb</h3>
-    <h4><span class="red">26.79 %</span> covered</h4>
+    <h4><span class="red">28.57 %</span> covered</h4>
     <div>
       <b>56</b> relevant lines. 
-      <span class="green"><b>15</b> lines covered</span> and
-      <span class="red"><b>41</b> lines missed.</span>
+      <span class="green"><b>16</b> lines covered</span> and
+      <span class="red"><b>40</b> lines missed.</span>
     </div>
   </div>
   
@@ -752,8 +883,8 @@
           <code class="ruby">  def initialize(initial_contents)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="4" data-linenumber="5">
+          <span class="hits">4</span>
           
           <code class="ruby">    @contents = initial_contents || Hash.new(0)</code>
         </li>
@@ -776,8 +907,8 @@
           <code class="ruby">  def total_count</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="9">
-          
+        <li class="covered" data-hits="3" data-linenumber="9">
+          <span class="hits">3</span>
           
           <code class="ruby">    @contents.values.sum</code>
         </li>
@@ -1463,11 +1594,11 @@
         <div class="source_table" id="5bc8e2b985791fe3018158f96c4c9a25e86de800">
   <div class="header">
     <h3>app/models/order.rb</h3>
-    <h4><span class="red">64.29 %</span> covered</h4>
+    <h4><span class="red">78.57 %</span> covered</h4>
     <div>
       <b>14</b> relevant lines. 
-      <span class="green"><b>9</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>11</b> lines covered</span> and
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
   
@@ -1522,14 +1653,14 @@
           <code class="ruby">  def total </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="9">
-          
+        <li class="covered" data-hits="3" data-linenumber="9">
+          <span class="hits">3</span>
           
           <code class="ruby">    oi = order_items.pluck(&quot;sum(quantity*price)&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="10">
-          
+        <li class="covered" data-hits="3" data-linenumber="10">
+          <span class="hits">3</span>
           
           <code class="ruby">    oi.sum</code>
         </li>
@@ -1877,14 +2008,14 @@
           <code class="ruby">  def subtotal</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="15">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="15">
+          <span class="hits">3</span>
           
           <code class="ruby">    s = quantity * price</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="16">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="16">
+          <span class="hits">3</span>
           
           <code class="ruby">    s</code>
         </li>

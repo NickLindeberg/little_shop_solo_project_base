@@ -20,9 +20,10 @@ describe 'user can add rating to item' do
     visit order_path(order_1)
 
     expect(page).to have_content("Status: completed")
-    expect(page).to_not have_button('Cancel Order')
+    expect(page).to have_button("Rate Item")
+    click_button "Rate Item"
 
-    expect(page).to have_content("Rate #{item_1.name}")
+    expect(current_path).to eq(new_order_item_rating_path(item_1))
   end
 
 end
