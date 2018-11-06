@@ -52,22 +52,30 @@ class Cart
   end
 
   def discount(item)
-    if count_of(item.id) < 10
+    if item.discount
+      if count_of(item.id) < 10
+        item.price
+      elsif count_of(item.id) >= 10 && count_of(item.id) <= 19
+        item_discount_ten(item)
+      else count_of(item.id) > 20
+        item_discount_twenty(item)
+      end
+    else
       item.price
-    elsif count_of(item.id) >= 10 && count_of(item.id) <= 19
-      item_discount_ten(item)
-    else count_of(item.id) > 20
-      item_discount_twenty(item)
     end
   end
 
   def sub(item)
-    if count_of(item.id) < 10
-       item.price * count_of(item.id)
-    elsif count_of(item.id) >= 10 && count_of(item.id) <= 19
-       item_discount_ten(item) * count_of(item.id)
-    else count_of(item.id) > 20
-       item_discount_twenty(item) * count_of(item.id)
+    if item.discount
+      if count_of(item.id) < 10
+         item.price * count_of(item.id)
+      elsif count_of(item.id) >= 10 && count_of(item.id) <= 19
+         item_discount_ten(item) * count_of(item.id)
+      else count_of(item.id) > 20
+         item_discount_twenty(item) * count_of(item.id)
+      end
+    else
+      item.price * count_of(item.id)
     end
   end
 

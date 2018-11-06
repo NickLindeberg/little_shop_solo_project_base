@@ -90,7 +90,6 @@
       <%= link_to "ID: #{item.id}", item_path(item) %>
       <% end %>
     </h5>
-    <img class="card-img-top" id="item-image-<%= item.id %>" alt="image for <%= item.name %>" src="<%= item.image %>" width="0" />
     <p>Price: <%= number_to_currency(item.price) %></p>
     <p>
       <strong>Merchant:</strong> <%= item.user.name %><br/>
@@ -102,6 +101,7 @@
       <p>Item Discounted: <%= item.discount %></p>
 
       <p><%= link_to 'Edit Item', edit_merchant_item_path(current_user, item), class: 'card-link' %></p>
+
       <% if item.active %>
         <%= button_to "Disable Item", merchant_item_disable_path(current_user, item.id), method: :patch, params: { toggle: :disable } %>
       <% else %>
@@ -111,7 +111,7 @@
       <% if item.discount %>
         <%= button_to "Remove Discount", merchant_item_full_price_path(current_user, item.id), method: :patch, params: { toggle: :full_price } %>
       <% else %>
-        <%= button_to "Enable Discount", merchant_item_enable_path(current_user, item.id), method: :patch, params: { toggle: :discount } %>
+        <%= button_to "Enable Discount", merchant_item_discounted_path(current_user, item.id), method: :patch, params: { toggle: :discounted } %>
       <% end %>
     <% end %>
   </div>
