@@ -25,6 +25,7 @@ Updated <%= distance_of_time_in_words(@order.created_at, Time.now) %> ago
     <th>Quantity</th>
     <th>Price</th>
     <th>Subtotal</th>
+    <th>Rating</th>
     <th></th>
   </tr>
   <% @order.order_items.each do |o_item| %>
@@ -35,21 +36,38 @@ Updated <%= distance_of_time_in_words(@order.created_at, Time.now) %> ago
     <td><%= o_item.quantity %></td>
     <td><%= number_to_currency(o_item.price) %></td>
     <td><%= number_to_currency(o_item.subtotal) %></td>
+    <% if o_item.fulfilled == true %>
+      <% if o_item.ratings.count != 1 %>
+      <td><%= link_to "Rate Item", new_order_item_rating_path(o_item) %></td>
+    <% else %>
+      <td><% o_item.ratings.each do |r| %>
+        <%= button_to "Disable Rating", rating_path(r), method: :patch, params: { toggle: :disable } %>
+        <% if r.active == true %>
+          Title: <%= r.title %>
+          Descrption: <%= r.description %>
+          Score: <%= r.rating %>
+          <% else %>
+        <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    </td>
+
     <td>
-      <% if o_item.item.user == current_user && 
-            current_user.merchant? && 
+      <% if o_item.item.user == current_user &&
+            current_user.merchant? &&
             o_item.fulfilled == false &&
             o_item.quantity <= o_item.item.inventory
       %>
       <%= button_to 'fulfill item', order_item_fulfill_path(@order, o_item), method: :patch %>
-      <% elsif o_item.item.user == current_user && 
-            current_user.merchant? && 
+      <% elsif o_item.item.user == current_user &&
+            current_user.merchant? &&
             o_item.fulfilled == false &&
             o_item.quantity > o_item.item.inventory
       %>
       <span class="red">cannot fulfill, not enough inventory</span>
-      <% elsif o_item.item.user == current_user && 
-            current_user.merchant? && 
+      <% elsif o_item.item.user == current_user &&
+            current_user.merchant? &&
             o_item.fulfilled == true
       %>
       (item fulfilled)
