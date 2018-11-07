@@ -36,7 +36,22 @@ Updated <%= distance_of_time_in_words(@order.created_at, Time.now) %> ago
     <td><%= o_item.quantity %></td>
     <td><%= number_to_currency(o_item.price) %></td>
     <td><%= number_to_currency(o_item.subtotal) %></td>
-    <td><%= link_to "Rate Item", new_order_item_rating_path(o_item) %></td>
+    <% if o_item.fulfilled == true %>
+      <% if o_item.ratings.count != 1 %>
+      <td><%= link_to "Rate Item", new_order_item_rating_path(o_item) %></td>
+    <% else %>
+      <td><% o_item.ratings.each do |r| %>
+        <%= button_to "Disable Rating", rating_path(r), method: :patch, params: { toggle: :disable } %>
+        <% if r.active == true %>
+          Title: <%= r.title %>
+          Descrption: <%= r.description %>
+          Score: <%= r.rating %>
+          <% else %>
+        <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    </td>
 
     <td>
       <% if o_item.item.user == current_user &&

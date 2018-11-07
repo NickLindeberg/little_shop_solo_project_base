@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181106173336) do
+ActiveRecord::Schema.define(version: 20181107033348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20181106173336) do
     t.integer "rating"
     t.bigint "order_item_id"
     t.bigint "user_id"
+    t.boolean "active", default: true
     t.index ["order_item_id"], name: "index_ratings_on_order_item_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
